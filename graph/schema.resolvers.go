@@ -35,6 +35,18 @@ func (r *queryResolver) GetAllUsers(ctx context.Context) (*model.GetAllUsersResp
 	return response, nil
 }
 
+// GetUserByID is the resolver for the getUserById field.
+func (r *queryResolver) GetUserByID(ctx context.Context, userID string) (*model.GetUserResponse, error) {
+	response, _ := query.GetUserByIdHandler(ctx, userID)
+	return response, nil
+}
+
+// GetUserByUsername is the resolver for the getUserByUsername field.
+func (r *queryResolver) GetUserByUsername(ctx context.Context, username string) (*model.GetUserResponse, error) {
+	response, _ := query.GetUserByUsernameHandler(ctx, username)
+	return response, nil
+}
+
 // Mutation returns MutationResolver implementation.
 func (r *Resolver) Mutation() MutationResolver { return &mutationResolver{r} }
 

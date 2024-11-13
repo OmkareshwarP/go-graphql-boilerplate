@@ -1,6 +1,8 @@
 # GraphQL schema
 type Query {
   getAllUsers: GetAllUsersResponse!
+  getUserById(userId: String!): GetUserResponse!
+  getUserByUsername(username: String!): GetUserResponse!
 }
 
 type Mutation {
@@ -47,4 +49,12 @@ type CreateUserResponse {
   statusCode: Int!
   errorCodeForClient: String!
   data: UserID
+}
+
+type GetUserResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: User
 }

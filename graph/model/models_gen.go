@@ -26,6 +26,14 @@ type GetAllUsersResponse struct {
 	Data               []*User `json:"data,omitempty"`
 }
 
+type GetUserResponse struct {
+	Error              bool   `json:"error"`
+	Message            string `json:"message"`
+	StatusCode         int    `json:"statusCode"`
+	ErrorCodeForClient string `json:"errorCodeForClient"`
+	Data               *User  `json:"data,omitempty"`
+}
+
 type Mutation struct {
 }
 
