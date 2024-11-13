@@ -2,7 +2,6 @@ package mutation
 
 import (
 	"context"
-	"errors"
 	"go-graphql-boilerplate/graph/model"
 	"go-graphql-boilerplate/pkg/types"
 	"go-graphql-boilerplate/pkg/utils"
@@ -17,7 +16,13 @@ func CreateUserHandler(ctx context.Context, firstName string, lastName string) (
 	username := utils.RemoveSpacesAndSpecialChars(fullName) + "_" + userID
 
 	if !utils.IsUsernameUnique(username) {
-		return nil, errors.New("username already exists")
+		return &model.CreateUserResponse{
+			Error:              true,
+			Message:            "username already exists",
+			ErrorCodeForClient: "usernameAlreadyExists",
+			StatusCode:         400,
+			Data:               nil,
+		}, nil
 	}
 
 	user := &types.User{
