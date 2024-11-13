@@ -17,6 +17,18 @@ func (r *mutationResolver) CreateUser(ctx context.Context, firstName string, las
 	return response, nil
 }
 
+// UpdateUser is the resolver for the updateUser field.
+func (r *mutationResolver) UpdateUser(ctx context.Context, userID string, username *string, firstName *string, lastName *string) (*model.GenericResponse, error) {
+	response, _ := mutation.UpdateUserHandler(ctx, userID, username, firstName, lastName)
+	return response, nil
+}
+
+// DeleteUser is the resolver for the deleteUser field.
+func (r *mutationResolver) DeleteUser(ctx context.Context, userID string) (*model.GenericResponse, error) {
+	response, _ := mutation.DeleteUserHandler(ctx, userID)
+	return response, nil
+}
+
 // GetAllUsers is the resolver for the getAllUsers field.
 func (r *queryResolver) GetAllUsers(ctx context.Context) (*model.GetAllUsersResponse, error) {
 	response, _ := query.GetAllUsersHandler(ctx)

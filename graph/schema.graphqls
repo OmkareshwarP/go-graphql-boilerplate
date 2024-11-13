@@ -5,6 +5,13 @@ type Query {
 
 type Mutation {
   createUser(firstName: String!, lastName: String!): CreateUserResponse!
+  updateUser(
+    userId: String!
+    username: String
+    firstName: String
+    lastName: String
+  ): GenericResponse!
+  deleteUser(userId: String!): GenericResponse!
 }
 
 type GenericResponse {
