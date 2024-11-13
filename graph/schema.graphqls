@@ -1,0 +1,43 @@
+# GraphQL schema
+type Query {
+  getAllUsers: GetAllUsersResponse!
+}
+
+type Mutation {
+  createUser(firstName: String!, lastName: String!): CreateUserResponse!
+}
+
+type GenericResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: String!
+}
+
+type User {
+  userId: String!
+  username: String!
+  firstName: String!
+  lastName: String!
+}
+
+type GetAllUsersResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: [User!]
+}
+
+type UserID {
+  userId: String!
+}
+
+type CreateUserResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: UserID
+}
